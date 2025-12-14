@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './HeroSection.module.css';
+import CertificateModal from '../CertificateModal/CertificateModal';
 
 // HeroSection: split-image top/bottom slices with overlay and subtle parallax effect.
 export default function HeroSection(){
@@ -11,6 +12,7 @@ export default function HeroSection(){
   });
   const [defaultTop, setDefaultTop] = useState(null);
   const [logoSrc, setLogoSrc] = useState('/images/logoo.jpg');
+  const [showCert, setShowCert] = useState(false);
 
   useEffect(()=>{
     const onScroll = () => {
@@ -62,7 +64,10 @@ export default function HeroSection(){
 
   return (
     <header ref={ref} className={styles.hero}>
-      <div className={styles.credit}>Earl John V. Edulan · BSIT 3B</div>
+      <div className={styles.credit}>
+        <div className={styles.name}>Earl John V. Edulan · BSIT 3B</div>
+        <button className={styles.certificate} onClick={() => setShowCert(true)} aria-haspopup="dialog" aria-expanded={showCert}>Certificate</button>
+      </div>
       <img src={logoSrc} alt="HCDC logo" className={styles.logo} />
       <div className={styles.sliceTop} ref={topRef} style={ topImage ? { backgroundImage:`url(${topImage})` } : (defaultTop ? { backgroundImage:`url(${defaultTop})` } : undefined) }>
         <div className={styles.overlay} />
@@ -72,6 +77,7 @@ export default function HeroSection(){
         <div className={styles.overlay} />
         <h4 className={styles.label}>CEBU AND BOHOL</h4>
       </div>
+      {showCert && <CertificateModal onClose={() => setShowCert(false)} />}
     </header>
   )
 } 

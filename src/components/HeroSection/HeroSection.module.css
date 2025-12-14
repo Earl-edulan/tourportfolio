@@ -28,9 +28,12 @@
 .sliceBottom .overlay{background:linear-gradient(180deg, rgba(0,0,0,0.56), rgba(0,0,0,0.32));}
 .label{position:relative;color:#fff;font-size:6vw;letter-spacing:1px;font-weight:700;margin:0;text-shadow:0 4px 12px rgba(0,0,0,0.5);transition: transform 360ms ease}
 
-.credit{position:absolute;top:12px;left:12px;z-index:60;color:var(--muted);background:rgba(6,12,22,0.38);padding:7px 10px;border-radius:8px;font-size:0.9rem;border:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(4px);} 
+.credit{position:absolute;top:12px;left:12px;z-index:60;color:var(--muted);background:rgba(6,12,22,0.38);padding:10px;border-radius:8px;font-size:0.9rem;border:1px solid rgba(255,255,255,0.03);backdrop-filter:blur(4px);display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .logo{position:absolute;top:14px;right:18px;z-index:70;height:56px;width:auto;border-radius:10px;padding:6px;background:rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(0,0,0,0.45);object-fit:contain;transition:transform 180ms ease}
 .logo:hover{transform:scale(1.02)}
+/* Certificate button placed below the name inside credit */
+.certificate{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.08);padding:6px 10px;border-radius:8px;font-weight:600;cursor:pointer;backdrop-filter:blur(4px);transition:background 180ms ease, transform 120ms ease;font-size:0.9rem}
+.certificate:hover{background:rgba(255,255,255,0.04);transform:scale(1.03)}
 @media (min-width:900px){.logo{height:88px}}
 @media (max-width:520px){.credit{font-size:0.8rem;padding:6px 8px;top:8px;left:8px}}
 
