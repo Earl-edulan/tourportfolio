@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './App.module.css';
 import HeroSection from './components/HeroSection/HeroSection';
+import Hearts from './components/Hearts/Hearts';
 import DaySection from './components/DaySection/DaySection';
 import daysData from './data/photos';
 
@@ -8,6 +9,7 @@ import daysData from './data/photos';
 export default function App(){
   return (
     <div className={styles.app}>
+      <Hearts />
       <HeroSection />
       <main className={styles.main}>
         {daysData.map((day, idx) => (

@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './HeroSection.module.css';
 import CertificateModal from '../CertificateModal/CertificateModal';
+import JournalModal from '../JournalModal/JournalModal';
+import ContactModal from '../ContactModal/ContactModal';
 
 // HeroSection: split-image top/bottom slices with overlay and subtle parallax effect.
 export default function HeroSection(){
@@ -13,6 +15,8 @@ export default function HeroSection(){
   const [defaultTop, setDefaultTop] = useState(null);
   const [logoSrc, setLogoSrc] = useState('/images/logoo.jpg');
   const [showCert, setShowCert] = useState(false);
+  const [showJournal, setShowJournal] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   useEffect(()=>{
     const onScroll = () => {
@@ -64,10 +68,17 @@ export default function HeroSection(){
 
   return (
     <header ref={ref} className={styles.hero}>
-      <div className={styles.credit}>
-        <div className={styles.name}>Earl John V. Edulan · BSIT 3B</div>
-        <button className={styles.certificate} onClick={() => setShowCert(true)} aria-haspopup="dialog" aria-expanded={showCert}>Certificate</button>
-      </div>
+        <div className={styles.credit}>
+          <img src="/images/profile.jpg" alt="Profile" className={styles.profile} />
+          <div className={styles.creditContent}>
+            <div className={styles.name}>Earl John V. Edulan · BSIT 3B</div>
+            <div className={styles.actions}>
+              <button className={styles.certificate} onClick={() => setShowCert(true)} aria-haspopup="dialog" aria-expanded={showCert}>Certificate</button>
+              <button className={styles.certificate} onClick={() => setShowJournal(true)} aria-haspopup="dialog" aria-expanded={showJournal}>Journal</button>
+              <button className={styles.certificate} onClick={() => setShowContact(true)} aria-haspopup="dialog" aria-expanded={showContact}>Contact</button>
+            </div>
+          </div>
+        </div>
       <img src={logoSrc} alt="HCDC logo" className={styles.logo} />
       <div className={styles.sliceTop} ref={topRef} style={ topImage ? { backgroundImage:`url(${topImage})` } : (defaultTop ? { backgroundImage:`url(${defaultTop})` } : undefined) }>
         <div className={styles.overlay} />
@@ -78,6 +89,8 @@ export default function HeroSection(){
         <h4 className={styles.label}>CEBU AND BOHOL</h4>
       </div>
       {showCert && <CertificateModal onClose={() => setShowCert(false)} />}
+      {showJournal && <JournalModal onClose={() => setShowJournal(false)} />}
+      {showContact && <ContactModal onClose={() => setShowContact(false)} />}
     </header>
   )
 } 
